@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="ru"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ProcosMed — платформа для профессионалов</title>
+<style>
+*{box-sizing:border-box}body{margin:0;min-height:100vh;color:#f5f2ff;background:radial-gradient(ellipse at 50% 32%,#302052 0,transparent 47%),radial-gradient(ellipse at 85% 100%,#1a2446,transparent 52%),#100f1b;font:16px system-ui,sans-serif;color-scheme:dark}button,input,select{font:inherit}button,select{cursor:pointer}button{color:inherit}button:focus-visible,select:focus-visible,input:focus-visible,summary:focus-visible{outline:2px solid #cbb6ff;outline-offset:3px}header{height:80px;margin:auto;max-width:1280px;padding:0 clamp(18px,5vw,64px);display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #ffffff1c}.icon{width:46px;height:46px;display:grid;place-items:center;border:1px solid #ffffff30;border-radius:14px;background:#ffffff09}.icon svg,.search svg{width:21px;height:21px;fill:none;stroke:currentColor;stroke-width:1.6}main{max-width:800px;margin:auto;padding:clamp(56px,12vh,132px) 20px 64px;text-align:center}h1{font-size:clamp(56px,12vw,110px);letter-spacing:-.085em;line-height:1;margin:0;font-weight:710}h1 span{color:#cdb8ff}.subtitle{margin:16px 0 36px;color:#d1c9e0;font-size:clamp(16px,3vw,20px)}.search{display:flex;align-items:center;gap:14px;padding:9px 9px 9px 19px;background:#201a31;border:1px solid #8770b4;border-radius:17px;box-shadow:0 16px 50px #08051077}.search input{width:100%;min-width:0;background:none;border:0;color:inherit;padding:10px 0}.search input::placeholder{color:#bfb5d4}.primary{background:#d1baff;color:#201330;border:0;border-radius:10px;padding:11px 19px;font-weight:650}.filters{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;margin-top:12px}select{width:100%;min-width:0;color:inherit;border:1px solid #ffffff30;background:#211a32;border-radius:11px;padding:10px;font-size:.875rem}.results{margin-top:10px;text-align:left}.results button,.panel button:not(.icon){display:block;width:100%;text-align:left;border:0;border-radius:9px;padding:10px;background:transparent}.results button:hover,.panel button:not(.icon):hover{background:#ffffff16}.results button{border:1px solid #ffffff20;background:#211a32;margin:5px 0}.results small{display:block;color:#c6bbdb;margin-top:4px}.quick{display:flex;justify-content:center;flex-wrap:wrap;gap:8px;margin:25px 0}.quick button{border:1px solid #ffffff29;border-radius:99px;background:#ffffff09;padding:8px 13px;font-size:.875rem}.quick button:hover,.icon:hover{background:#ffffff19}.panel{color:inherit;background:#1d172d;border:1px solid #ffffff30;border-radius:18px;padding:18px;max-width:calc(100vw - 32px);width:360px}.panel::backdrop{background:#080612a0}.nav{margin:16px auto auto 16px;max-height:calc(100% - 32px)}.panel header{height:auto;border:0;padding:0 0 10px;gap:12px}.panel h2{font-size:20px;margin:0}.panel summary{padding:10px;cursor:pointer}.panel details button{padding-left:25px!important}.panel p{color:#d1c9e0}.notice{color:#d1c9e0;font-size:.875rem}@media(max-width:540px){.filters{grid-template-columns:repeat(2,1fr)}.search{gap:8px;padding-left:10px}.primary{padding-inline:12px}}
+</style>
+<header><button class="icon" id="menuOpen" aria-label="Открыть меню"><svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button><button class="icon" id="accountOpen" aria-label="Личный кабинет"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.5"/><path d="M4.5 21v-1a7.5 7.5 0 0 1 15 0v1"/></svg></button></header>
+<main><h1>Procos<span>Med</span></h1><p class="subtitle">Платформа для профессионалов</p>
+<form id="searchForm"><div class="search"><svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6"/><path d="m15 15 5 5"/></svg><input id="query" type="search" aria-label="Поиск по сайту" placeholder="Курсы, оборудование, конгрессы…" autocomplete="off"><button class="primary">Найти</button></div>
+<div class="filters"><select id="country" aria-label="Страна"><option value="">Страна</option><option>Польша</option><option>Франция</option></select><select id="city" aria-label="Город"><option value="">Город</option></select><select id="price" aria-label="Цена"><option value="">Цена</option><option value="100">До 100 €</option><option value="300">До 300 €</option><option value="500">До 500 €</option></select><select id="date" aria-label="Дата курса"><option value="">Дата курса</option><option value="2027-01">Январь 2027</option><option value="2027-02">Февраль 2027</option></select></div></form>
+<section id="results" class="results" aria-label="Результаты поиска" aria-live="polite"></section><div class="quick"><button data-find="Курсы">Курсы</button><button data-find="Оборудование">Оборудование</button><button data-find="Конгрессы">Конгрессы</button><button data-find="Вакансии">Вакансии</button></div></main>
+<dialog id="menu" class="panel nav"><header><h2>Меню</h2><form method="dialog"><button class="icon" aria-label="Закрыть меню">×</button></form></header>
+<button data-info="О платформе">О платформе</button><button data-find="Курсы">Каталог курсов</button><details><summary>Продажи</summary><button data-find="Оборудование">Оборудование</button><button data-find="Косметика">Косметика</button><button data-find="Расходные материалы">Расходные материалы</button><button data-find="Препараты">Препараты</button></details><button data-find="Вакансии">Вакансии</button><button data-info="Анкета косметологов">Анкета косметологов</button><button data-find="Конгрессы">Конгрессы, выставки и симпозиумы</button><button data-info="Дистрибьюция">Дистрибьюция</button></dialog>
+<dialog id="account" class="panel"><header><h2>Создать кабинет</h2><form method="dialog"><button class="icon" aria-label="Закрыть">×</button></form></header><button data-info="Кабинет косметолога">Косметолог</button><button data-info="Кабинет поставщика">Поставщик</button></dialog>
+<dialog id="info" class="panel"><header><h2 id="infoTitle"></h2><form method="dialog"><button class="icon" aria-label="Закрыть">×</button></form></header><p id="infoText"></p></dialog>
+<script>
+const get = id => document.getElementById(id)
+const query = get('query'), results = get('results'), country = get('country'), city = get('city'), price = get('price'), date = get('date')
+const cities = {'Польша':['Варшава','Краков'],'Франция':['Париж']}
+const entries = [
+ ['Курсы','Основы эстетической косметологии','Польша','Варшава',250,'2027-01-18'],
+ ['Курсы','Профессиональный уход за кожей','Франция','Париж',180,'2027-02-12'],
+ ['Оборудование','Лампа-лупа для кабинета','Польша','Краков',95,''],
+ ['Косметика','Набор для профессионального ухода','Польша','Варшава',75,''],
+ ['Расходные материалы','Одноразовые салфетки для кабинета','Польша','Краков',12,''],
+ ['Препараты','Каталог препаратов поставщика','Франция','Париж',null,''],
+ ['Конгрессы','Выставка эстетической медицины','Франция','Париж',120,'2027-01-26'],
+ ['Вакансии','Косметолог в клинику','Польша','Варшава',null,'']
+]
+function showInfo(title, description){
+ get('menu').close()
+ get('account').close()
+ get('infoTitle').textContent = title
+ get('infoText').textContent = description
+ get('info').showModal()
+}
+function render(force = false){
+ const term = query.value.trim().toLocaleLowerCase('ru')
+ results.replaceChildren()
+ if(!force && !term && !country.value && !city.value && !price.value && !date.value) return
+ const matches = entries.filter(([category,title,land,town,cost,day]) =>
+   (category+' '+title).toLocaleLowerCase('ru').includes(term) &&
+   (!country.value || country.value === land) && (!city.value || city.value === town) &&
+   (!price.value || cost !== null && cost <= Number(price.value)) &&
+   (!date.value || category === 'Курсы' && day.startsWith(date.value)))
+ const note = document.createElement('p')
+ note.className = 'notice'
+ note.textContent = matches.length ? 'Демонстрационные результаты' : 'По этому запросу ничего не найдено.'
+ results.append(note)
+ for(const [category,title,,town,cost,day] of matches){
+   const button = document.createElement('button')
+   const details = document.createElement('small')
+   details.textContent = [category,town,day && new Intl.DateTimeFormat('ru').format(new Date(day+'T12:00:00')),cost !== null && cost+' €'].filter(Boolean).join(' · ')
+   button.textContent = title
+   button.append(details)
+   button.onclick = () => showInfo(title, details.textContent)
+   results.append(button)
+ }
+}
+function updateCities(){
+ city.replaceChildren(new Option('Город',''))
+ for(const town of country.value ? cities[country.value] : Object.values(cities).flat()) city.add(new Option(town))
+}
+updateCities()
+country.onchange = () => { updateCities(); render() }
+for(const filter of [city,price,date]) filter.onchange = () => render()
+query.oninput = () => render()
+get('searchForm').onsubmit = event => { event.preventDefault(); render(true) }
+get('menuOpen').onclick = () => get('menu').showModal()
+get('accountOpen').onclick = () => get('account').showModal()
+document.querySelectorAll('[data-find]').forEach(button => button.onclick = () => {
+ get('menu').close()
+ query.value = button.dataset.find
+ render(true)
+ query.focus()
+})
+document.querySelectorAll('[data-info]').forEach(button => button.onclick = () => {
+ const title = button.dataset.info
+ const description = title === 'О платформе'
+   ? 'ProcosMed объединяет курсы, профессиональные товары, вакансии и события в эстетической медицине.'
+   : title.startsWith('Кабинет') ? 'Тип кабинета выбран. Регистрация доступна после подключения сервиса аккаунтов.' : 'Этот раздел представлен в навигации прототипа.'
+ showInfo(title,description)
+})
+</script></html>
